@@ -1082,9 +1082,8 @@ pub async fn handle_chat_completions(
         if let Some(params) = obj.remove("params") {
             if let Some(params_obj) = params.as_object() {
                 // Spread each param into the root level if not already present
-                // Use entry API to avoid unnecessary clones
                 for (key, value) in params_obj {
-                    obj.entry(key.clone()).or_insert_with(|| value.clone());
+                    obj.entry(key.clone()).or_insert(value.clone());
                 }
             }
         }
