@@ -24,7 +24,7 @@
   },
   "bundle": {
     "active": true,
-    "createUpdaterArtifacts": true,
+    "createUpdaterArtifacts": false,
     "targets": [
       "deb",
       "rpm",
@@ -43,13 +43,5 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
-  },
-  "plugins": {
-    "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEI5QjA0MTk2NjE3QjA0MzIKUldReUJIdGhsa0d3dWJ0YklGeWdIRzR0QkJkU2lWejdxdzJaY0cyc2JLa2RPd3ZxdVd3dEpadXgK",
-      "endpoints": [
-        "https://github.com/xxnuo/open-coreui/releases/latest/download/latest.json"
-      ]
-    }
   }
 }

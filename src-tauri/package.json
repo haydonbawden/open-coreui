@@ -1,5 +1,3 @@
 {
-  "dependencies": {
-    "@tauri-apps/plugin-updater": "~2"
-  }
+  "dependencies": {}
 }
