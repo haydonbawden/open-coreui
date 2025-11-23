@@ -53,3 +53,4 @@ open-coreui.service
 *.pkg.tar.zst
 /pkg
 /src
+backend/target/
