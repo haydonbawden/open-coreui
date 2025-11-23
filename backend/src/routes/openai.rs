@@ -1076,12 +1076,22 @@ pub async fn handle_chat_completions(
         tracing::info!("🔧 Tools requested in chat: {}", tool_ids.join(", "));
     }
 
-    // Remove these from payload before forwarding to LLM API
+    // Handle the params field - spread its contents into root level and remove it
     if let Some(obj) = payload_obj.as_object_mut() {
+        // Extract and spread params if it exists
+        if let Some(params) = obj.remove("params") {
+            if let Some(params_obj) = params.as_object() {
+                // Spread each param into the root level if not already present
+                for (key, value) in params_obj {
+                    obj.entry(key.clone()).or_insert(value.clone());
+                }
+            }
+        }
+        
+        // Remove frontend-specific fields
         obj.remove("session_id");
         obj.remove("chat_id");
         obj.remove("id");
-        // Remove other frontend-only fields
         obj.remove("filter_ids");
         obj.remove("tool_ids");
         obj.remove("tool_servers");
